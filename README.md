@@ -1,4 +1,4 @@
-# ☀️ Sunnylink Database Wiki
+# ☀️ Sunnylink Wiki
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Status: Alpha](https://img.shields.io/badge/Status-Alpha-orange.svg)]()
