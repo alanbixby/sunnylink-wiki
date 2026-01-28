@@ -27,6 +27,35 @@ Sunnypilot (a fork of openpilot) offers incredible customization, with over **10
 
 ---
 
+## 🧠 The Models Page (Model Explorer)
+Navigating the dozens of available driving models can be confusing. Names like "WMI v12" or "Dark Souls" don't explain how the car will actually behave. The Models Page solves this by shifting the focus from version numbers to Driving Vibes.
+
+<img width="1348" height="1003" alt="cmhcB6JybV" src="https://github.com/user-attachments/assets/6a0af72a-3feb-42cb-a704-dadf7ac80600" />
+
+Instead of a dry list of files, users are presented with a rich "Model Explorer" that answers the most critical question: "How does it feel to drive?"
+
+### Key Features
+✨ The "Vibe Check" System: Every model is tagged with human-readable attributes (e.g., Aggressive, Limo Driver, On Rails, Wife Approved) so you know what to expect before you download.
+
+### 📊 Community Consensus: 
+We aggregate real feedback from the Sunnypilot Discord and forums to provide a "Truth Score" for each model.
+
+Example: "WMI v12 is great at intersections but can feel 'loose' on straight highways."
+
+### 🗂️ Smart Categorization: Models are grouped by their architecture and era:
+
+- 2026 World Models: The latest "End-to-End" AI that understands 3D scenes.
+- Legacy / Stable: Older, robotic models (like Recertified Herbalist) that are less smart but rock-solid on highways.
+- Experimental: "Bleeding edge" builds (like Firehose) for testers.
+
+### 🏎️ Hardware Context: 
+Notes on which models perform best on specific vehicle types (e.g., "Best for heavy steering racks" or "Optimized for Hyundai/Kia").
+
+### Data Source
+This page is powered by data/models.json, ensuring that as new models are released or community sentiment shifts, the database can be updated instantly via a simple Pull Request.
+
+---
+
 ## 🛠️ Tech Stack
 
 * **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
