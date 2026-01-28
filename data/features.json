@@ -25,8 +25,8 @@
             "fullName": "Neural Network Lateral Control",
             "category": "Core Control",
             "officialDefinition": "Replaces the traditional PID/Indi controller with a neural network model that inputs past curvature to predict future steering paths. Directly outputs curvature for lateral control.",
-            "userSummary": "AI-based steering that mimics human smoothness.",
-            "userTranslation": "\"AI Steering.\" Instead of using math equations to stay in the lane, it uses an AI brain trained on human driving. It feels smoother and more \"human,\" but can be \"looser\" on straight roads.",
+            "userSummary": "AI-based steering. Smoother, but can 'ping-pong' on some cars.",
+            "userTranslation": "\"AI Steering.\" Instead of using math equations to stay in the lane, it uses an AI brain. It feels smoother and more \"human,\" but if it starts ping-ponging (bouncing left/right), turn it off.",
             "settingsKeys": [
                 "nnlc_enabled"
             ]
@@ -37,8 +37,8 @@
             "fullName": "Dynamic Experimental Control",
             "category": "Core Control",
             "officialDefinition": "Automatically toggles between Chill Mode (Standard Longitudinal) and Experimental Mode (Traffic Light/Stop Sign handling) based on driving context (e.g., speed, road type).",
-            "userSummary": "Auto-switches between highway and city driving modes.",
-            "userTranslation": "\"City/Highway Switcher.\" Stops for red lights in the city, but acts like normal cruise control on the highway so you don't get phantom braking.",
+            "userSummary": "Auto-switches driving modes. Note: Can cause late braking.",
+            "userTranslation": "\"City/Highway Switcher.\" Automatically switches modes based on context. Tradeoff: Can make testing specific models harder and may brake late for signs. Useful, but adds complexity.",
             "settingsKeys": [
                 "dynamic_experimental_control"
             ]

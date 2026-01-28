@@ -42,10 +42,10 @@
           "label": "Lane Turn Desire",
           "type": "toggle",
           "default": false,
-          "description": "Force model to plan an intent to turn based on blinker.",
-          "useCase": "Makes the model more aggressive about initiating lane changes when blinker is activated.",
+          "description": "Forces the model to execute a turn when the blinker is active. Primarily used for 90-degree turns at intersections.",
+          "useCase": "Helps the car commit to sharp turns at lower speeds.",
           "tradeoffs": [
-            "Can make lane changes feel more natural.",
+            "Not primarily for lane changes.",
             "May be too aggressive in tight traffic."
           ],
           "userNote": "Enable if lane changes feel sluggish or delayed."
@@ -286,23 +286,24 @@
           "label": "Force Offroad Mode",
           "type": "toggle",
           "default": false,
-          "description": "Disables all driving features. The device becomes a passive dashcam.",
+          "description": "Disables active driving features to unlock settings restricted while driving.",
           "safetyLevel": "safe",
-          "useCase": "Valet mode or lending your car to someone unfamiliar with the system.",
-          "userNote": "Use when valeting the car or lending it to a non-tech driver."
+          "useCase": "Use when parked to change settings (Offroad), or for Valet mode.",
+          "userNote": "'Offroad' means parked/not driving. 'Onroad' means driving."
         },
         {
           "key": "sunnylink_uploader",
           "label": "Enable sunnylink Uploader",
           "type": "toggle",
           "default": false,
-          "description": "Uploads drive data to Sunnylink servers for analysis.",
-          "useCase": "Review your drives online and contribute to model training.",
+          "description": "Uploads drive data to Sunnylink servers (currently infrastructure test only).",
+          "useCase": "Infrastructure testing. Uploaded data is currently not viewable by users.",
           "tradeoffs": [
             "Uses mobile data if WiFi not available.",
-            "Privacy considerations - drive data is uploaded."
+            "Privacy considerations - drive data is uploaded.",
+            "Visualizer not yet functional."
           ],
-          "userNote": "Required if you want to view your drives online."
+          "userNote": "Currently for testing only. You cannot view your drives yet."
         },
         {
           "key": "show_advanced_controls",
@@ -448,10 +449,11 @@
           "useCase": "Fixes 'ping-pong' (oscillation) on straight roads common in Hyundai/Kia vehicles.",
           "tradeoffs": [
             "Can feel 'loose' or unresponsive if the model is not well-tuned for your specific car.",
-            "Does not increase physical torque limits; cannot take turns sharper than the hardware allows."
+            "Does not increase physical torque limits; cannot take turns sharper than the hardware allows.",
+            "May cause ping-ponging on some vehicles - leave OFF if this occurs."
           ],
           "deepDive": "Uses an end-to-end lateral planning policy (e.g., North Nevada model) to predict path curvature rather than reacting to current lane deviation.",
-          "userNote": "Highly Recommended. Provides human-like smoothness."
+          "userNote": "Test carefully. If it ping-pongs, disable it and stick to stock."
         },
         {
           "key": "dynamic_experimental_control",
@@ -463,10 +465,12 @@
           "useCase": "Perfect for mixed commutes involving both freeways and city streets with traffic lights.",
           "tradeoffs": [
             "Can cause phantom braking if it falsely detects a red light or stop sign.",
-            "May switch modes unpredictably in complex intersections."
+            "May switch modes unpredictably in complex intersections.",
+            "Can cause late braking for lights/signs.",
+            "Makes evaluating specific models harder due to mode switching."
           ],
           "deepDive": "Monitors the 'slow_down_prob' from the model. If probability > threshold, injects Experimental Mode longitudinal plan.",
-          "userNote": "Best of both worlds. Prevents the car from driving too slowly on highways."
+          "userNote": "Good for mixed driving, but switch to full Experimental if you need consistent behavior."
         },
         {
           "key": "driving_personality",
@@ -600,11 +604,11 @@
           "useCase": "City driving where you encounter frequent traffic lights and stop signs.",
           "tradeoffs": [
             "Can brake suddenly for false positives (shadows, markings).",
-            "Drives aggressively between stops.",
-            "Not recommended for highway-only driving."
+            "May not stop in time for all lights/signs - be ready to brake.",
+            "Smoother braking behind cars, but can be unpredictable."
           ],
-          "warning": "Drives aggressively. Monitor closely.",
-          "userNote": "Required for 'Dynamic Experimental Control.'"
+          "warning": "Be cautious at lights/signs. Requires Alpha Longitudinal.",
+          "userNote": "Must enable Alpha Longitudinal first."
         },
         {
           "key": "alpha_longitudinal",
@@ -618,7 +622,7 @@
             "Can be jerky in stop-and-go on some vehicles.",
             "May brake harder or softer than expected."
           ],
-          "userNote": "Usually smoother than stock, but can be jerky in stop-and-go on some cars."
+          "userNote": "Required for Experimental Mode. Usually smoother than stock."
         },
         {
           "key": "vision_turn_control",
